@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="css/edit">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/note">Back</a>       
+      <a href="/note">Edit</a>       
+      <a class="Delete" data-method="DELETE" data-id="{{id}}">Delete</a>       
+    </nav>
+  </header>
+  {{{content}}} 
+  <script src="/js/Edit/edit"></script>
+</body>
+</html>

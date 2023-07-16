@@ -1,0 +1,5 @@
+<VirtualHost *:3000>
+	ProxyPass / http://localhost:8000/
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet

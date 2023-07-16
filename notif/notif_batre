@@ -1,0 +1,50 @@
+#!/bin/bash
+
+
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+
+BattrePrima=80
+BattreNormal=70
+BatreLow=30
+
+BattreCstatus=$(acpi | grep -P -o 'Discharging')
+StatusBatre=$(acpi | grep -P -o '[0-9]+(?=%)')
+
+
+BatreBaik=~/Var/batre_baik
+BatreSNormal=~/Var/batre_normal
+BatreSLow=~/Var/batre_low
+
+waktuTersisa=$(acpi | grep -P -o "[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}")
+ 
+if [ ! -f $BatreBaik ] && [ $StatusBatre -le $BattrePrima ] && [ $StatusBatre -gt $BattreNormal ] && [ $BattreCstatus ]
+then
+    ( rm -r ~/Var/* )
+    ( touch ~/Var/batre_baik )
+    dunstify "Batre: ${StatusBatre} 
+remaining: ${waktutersisa}" -i battery-80 -u low
+    play ~/Downloads/notif/sound/batreNP.wav
+elif [ ! -f $BatreSNormal ] && [ $StatusBatre -le $BattreNormal ] && [ $StatusBatre -gt $BatreLow ] && [ $BattreCstatus ] 
+then
+  ( rm -r ~/Var/* )
+  ( touch ~/Var/batre_normal )
+  dunstify "Batre: ${StatusBatre}%
+remaining: ${waktuTersisa}" -i battery-70 -u low
+  play ~/Downloads/notif/sound/batreNP.wav
+elif [ ! -f $BatreSLow ] && [ $StatusBatre -le $BatreLow ] && [ $BattreCstatus ]
+then    
+  ( rm -r ~/Var/* )
+  ( touch ~/Var/batre_low )
+  dunstify "Batre-Low: ${StatusBatre}
+remaining: ${waktuTersisa}" -i battery-30 -u normal
+  play ~/Downloads/notif/sound/batreNP.wav
+elif [ $StatusBatre -gt 5 ] && [ $StatusBatre -le 7 ] && [ $BattreCstatus ]
+then
+  dunstify "Batre sangat lemah: ${StatusBatre}
+  Sistem akan dimatikan segera" -i battery-10 -u critical
+elif [ $StatusBatre -le 5 ]
+then
+  ( shutdown -h now ) 
+fi
+

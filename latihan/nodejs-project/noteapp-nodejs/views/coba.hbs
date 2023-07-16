@@ -1,0 +1,18 @@
+<main>
+<div class="cardContainer">
+{{#each res}}
+<a href="/note/{{this.id}}" class="card">
+    <div class="judulNote">
+      <h2>{{this.judul}}</h2>
+    </div>
+    <div class="isiNote">
+      <p>{{this.isi}}</p>
+    </div>
+</a>
+{{/each}}
+</div>
+<a href="/addNote" class="addNote">
+  Add Note
+</a>
+</main>
+

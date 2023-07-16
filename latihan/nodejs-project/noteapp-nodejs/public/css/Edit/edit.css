@@ -1,0 +1,37 @@
+main{
+  display: flex;
+  justify-content: center;
+}
+
+.readnote{
+  max-width: 1000px;
+  width: 100vw;
+  text-align: center;
+}
+
+.judulNote{
+  padding: 10px;
+  font-family: arial;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: white;
+  border: #e3e3e3 solid 1px;
+  margin-top: 15px;
+  
+}
+
+.isiNote{
+  margin-top: 15px;
+  height: fit-content;
+  border: #e3e3e3 solid 1px;
+  min-height: 100vh;
+  background: white;
+  padding: 1.5rem;
+  display: flex;
+  font-family: arial;
+  text-align: start;
+}
+
+.delete{
+  display: none;
+}

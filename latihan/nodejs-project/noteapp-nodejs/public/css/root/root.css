@@ -1,0 +1,48 @@
+:root{
+  font-size: 16px;
+}
+
+
+body{
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+}
+
+main{
+  width: 100vw;
+  height: 100vh;
+}
+
+.navbar{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  max-width: 900px;
+  padding: 15px;
+  background: white;
+  bottom: 0;
+  margin-left: auto;
+  border: #e3e3e3 solid 2px;
+  justify-content: center;
+}
+
+header{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar > a, .button{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: white;
+  background: black;
+  padding: 10px;
+  font-family: arial;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
